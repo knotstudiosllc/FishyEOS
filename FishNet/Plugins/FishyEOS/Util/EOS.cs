@@ -41,8 +41,12 @@ namespace FishNet.Plugins.FishyEOS.Util
             var gameObject = new GameObject("EOSManager");
             UnityEngine.Object.DontDestroyOnLoad(gameObject);
             _eosManager = gameObject.AddComponent<EOSManager>();
-#if !UNITY_EDITOR && !(UNITY_STANDALONE_WIN)
-            EOSManager.Instance?.Init(_eosManager, EOSPackageInfo.ConfigFileName);
+#if !UNITY_EDITOR && !(UNITY_STANDALONE_WIN) && UNITY_ANDROID
+            EOSManager.Instance?.Init(_eosManager, "eos_android_config.json");
+#elif !UNITY_EDITOR && !(UNITY_STANDALONE_WIN) && UNITY_IOS
+            EOSManager.Instance?.Init(_eosManager, "eos_ios_config.json");
+#elif !UNITY_EDITOR && !(UNITY_STANDALONE_WIN) && UNITY_LINUX
+            EOSManager.Instance?.Init(_eosManager, "eos_linux_config.json");
 #endif
             return PlatformInterface;
         }
@@ -57,8 +61,12 @@ namespace FishNet.Plugins.FishyEOS.Util
             var gameObject = new GameObject("EOSManager");
             UnityEngine.Object.DontDestroyOnLoad(gameObject);
             _eosManager = gameObject.AddComponent<EOSManager>();
-#if !UNITY_EDITOR && !(UNITY_STANDALONE_WIN)
-            EOSManager.Instance?.Init(_eosManager, EOSPackageInfo.ConfigFileName);
+#if !UNITY_EDITOR && !(UNITY_STANDALONE_WIN) && UNITY_ANDROID
+            EOSManager.Instance?.Init(_eosManager, "eos_android_config.json");
+#elif !UNITY_EDITOR && !(UNITY_STANDALONE_WIN) && UNITY_IOS
+            EOSManager.Instance?.Init(_eosManager, "eos_ios_config.json");
+#elif !UNITY_EDITOR && !(UNITY_STANDALONE_WIN) && UNITY_LINUX
+            EOSManager.Instance?.Init(_eosManager, "eos_linux_config.json");
 #endif
             return _eosManager;
         }
